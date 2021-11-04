@@ -1,9 +1,8 @@
-.app {
-    max-width: 100%;
-    margin: 0 auto;
-}
 
-nav .listItem a {
+
+
+
+.navListItem {
     color: white;
     text-decoration: none;
 }
@@ -22,4 +21,10 @@ nav .listItem:not(:first-child) {
     padding: 2%;
     margin-top: 1.5%;
     border-top: 2px solid #ffa000;
+}
+
+nav .listItem:hover {
+    border-top: none;
+    border-bottom: 2px solid #ffa000;
+    font-weight: bold;
 }
