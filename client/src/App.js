@@ -1,20 +1,60 @@
+
+import { Component } from 'react';
+
+import * as postService from './services/postServices';
+
 import Menu from './components/Menu';
 import Header from './components/Header';
 import Main from './components/Main';
+
 import style from './App.module.css';
 
-function App() {
-  return (
-    <div className={style.app}>
-      <Header />
 
-      <div className={style.container}>
-        <Menu />
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-        <Main />
+    this.state = {
+      posts: []
+    }
+  }
+
+
+  componentDidMount() {
+    postService.getAll()
+      .then(posts => {
+        this.setState({ posts })
+      });
+  }
+
+  render() {
+    return (
+      <div className={style.app}>
+        <Header />
+
+        <div className={style.container}>
+          <Menu />
+
+          <Main posts={this.state.posts}/>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
+
+
+// function App() {
+//   return (
+//     <div className={style.app}>
+//       <Header />
+
+//       <div className={style.container}>
+//         <Menu />
+
+//         <Main />
+//       </div>
+//     </div>
+//   );
+// }
